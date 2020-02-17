@@ -1,4 +1,6 @@
-" Lorenzo Olearo .vimrc "
+"
+" Lorenzo Olearo ~/.vimrc "
+"
 
 "GENERAL
 
@@ -18,7 +20,11 @@ nmap <leader>w :w!<cr>
 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
 
-" retunr to the last edit position when opening files
+" Spell-check set map
+map<F6> :setlocal spell! spelllang=en_us<CR>
+map<F7> :setlocal spell! spelllang=it<CR>
+
+" return to the last edit position when opening files
 au BufReadPost * if line("'\'") > 1 && line("'\'") <= line("$") | exe "normal! g'\"" | endif
 
 " VIM USER INTERFACE
