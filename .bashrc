@@ -9,6 +9,8 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+tilde='~'
+
 # KDE related 
 alias kde-restart='kstart5 plasmashell'
 
@@ -20,6 +22,8 @@ alias dl-yt='youtube-dl -f bestaudio[ext=m4a] --embed-thumbnail'
 # Power related
 alias sus='systemctl suspend'
 alias off='systemctl poweroff'
+alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0'
+alias bat-stat='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|to\ full| percentage"'
 
 # Nvidia fan control
 alias gpu70='nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=70"'
@@ -28,3 +32,6 @@ alias gpu50='nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTa
 alias gpu30='nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=30"'
 alias gpu20='nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=20"'
 alias gpu0='nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=0"'
+
+
+
