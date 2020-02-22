@@ -11,6 +11,17 @@ PS1='[\u@\h \W]\$ '
 
 tilde='~'
 
+export EDITOR=vim
+
+# System alias
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+# Pacman related
+alias pacman-update='sudo pacman-mirrors --geoip'
+
 # KDE related 
 alias kde-restart='kstart5 plasmashell'
 
@@ -34,4 +45,29 @@ alias gpu20='nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTa
 alias gpu0='nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=0"'
 
 
+#
+# # ex - archive extractor
+# # usage: ex <file>
+#
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
