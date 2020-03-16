@@ -12,15 +12,26 @@ PS1='[\u@\h \W]\$ '
 tilde='~'
 
 export EDITOR=vim
+export XDG_CURRENT_DESKTOP=kde dolphin
+
+# Current work directory alias
+alias dumb='cd ~/Dropbox/Bicocca/side-projects/dumb-dumb-sorting-demo/'
+
+# Uni alias
+alias bic='cd ~/Dropbox/Bicocca/'
+alias anno1='cd ~/Dropbox/Bicocca/primo-anno/'
+alias sm1='cd ~/Dropbox/Bicocca/primo-anno/primo-semestre/'
+alias sm2='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/'
+alias prog='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/programmazione-2/'
+alias alg='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/algebra-lineare/'
+alias arch='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/architettura-elaboratori/'
+alias alg='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/algoritmi-strutture-dati/'
 
 # System alias
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
-
-# Pacman related
-alias pacman-update='sudo pacman-mirrors --geoip'
 
 # KDE related 
 alias kde-restart='kstart5 plasmashell'
@@ -70,4 +81,3 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
