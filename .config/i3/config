@@ -149,13 +149,14 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 assign [class="cool-retro-term"] $ws1
-assign [class="Brave"] $ws2
+# assign [class="Brave"] $ws2
 assign [class="Darktable"] $ws5
 assign [class="Telegram"] $ws6
 assign [class="discord"] $ws6
 assign [class="Steam"] $ws7
 assign [class="Lollypop"] $ws8
 assign [class="qBittorrent"] $ws9
+assign [class="Minecraft Launcher"] $ws7
 
 # floating
 # for_window [class="Telegram"] floating enable
@@ -163,6 +164,8 @@ for_window [class="discord"] floating enable
 for_window [class="qBittorrent"] floating enable
 for_window [class="dolphin"] floating enable
 for_window [class="cool-retro-term"] floating enable
+for_window [class="Virt-manager"] floating enable
+for_window [class="Minecraft Launcher"] floating enable
 
 
 # Colors
@@ -181,8 +184,8 @@ client.urgent           $urgent-bg-color	$urgent-bg-color   	$text-color		$bg-co
 
 # bar
 bar {
-	# status_command i3status
-  	status_command i3blocks -c .config/i3/i3blocks.conf
+	status_command i3status
+  	#status_command i3blocks -c .config/i3/i3blocks.conf
 
 
 	colors {
@@ -239,10 +242,11 @@ exec dropbox
 # Disable screen locking
 exec_always xautolock &
 exec_always xautolock -disable
+exec_always export XDG_CURRENT_DESKTOP=kde dolphin
 
-# Start lollypop at login
+# Start at login
 exec brave
-exec lollypop
+# exec lollypop
 
 # Shutdown, Reboot, login manager
 set $Locker i3lock --color 475263&& sleep 1
@@ -263,7 +267,9 @@ mode "$mode_system" {
 
 bindsym $mod+Shift+p mode "$mode_system"
 
-
+# Keyboard layout
+bindsym $mod+u exec setxkbmap us
+bindsym $mod+i exec setxkbmap it 
 
 # Set the wallpaper every time i3 starts
 exec_always feh --bg-fill /home/lollo/Pictures/Wallpapers/wallpaper.jpg
