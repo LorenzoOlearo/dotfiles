@@ -2,6 +2,11 @@
 " Lorenzo Olearo ~/.vimrc "
 "
 
+" CUSTOM COMMANDS
+"
+" Refresh the screen when executing a silent command
+:command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
+
 
 " MAPPINGS
 "
@@ -12,6 +17,9 @@ map<F8> :setlocal spell! spelllang=it<CR>
 " Wrapping
 map<F5> :set wrap<CR>
 map<F6> :set nowrap<CR>
+"
+" pdflatex auto-compile
+map<F4> :Silent pdflatex %<CR>
 
 
 "GENERAL
@@ -22,6 +30,16 @@ map<F6> :set nowrap<CR>
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
+" Numbered lines
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 "
 " Set to auto read when a file is changed form outside
 " set autoread
@@ -124,4 +142,7 @@ set laststatus=2
 
 " LaTeX related
 " Compile *.tex files when saving with :w
-autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
+" autocmd BufWritePost *.tex silent! execute "!pdflatex % >/dev/null 2>&1" | redraw!
+
+
+
