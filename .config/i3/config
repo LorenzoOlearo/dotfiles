@@ -5,8 +5,10 @@
 set $mod Mod4
 set $term --no-startup-id $TERMINAL
 for_window [class="^.*"] border pixel 2
-gaps inner 10
-gaps outer 5
+gaps inner 30
+# gaps outer 10
+gaps bottom 20
+
 floating_modifier $mod
 font pango:DejaVu Sans 12
 
@@ -14,25 +16,22 @@ font pango:DejaVu Sans 12
 exec picom
 exec dropbox
 exec brave
-exec --no-startup-id /usr/bin/indicator-kdeconnect
+exec --no-startup-id pulseeffects
+exec --no-startup-id nm-applet
+exec --no-startup-id kdeconnect-indicator
+
 
 exec_always feh --bg-fill /home/lollo/Pictures/Wallpapers/wallpaper.jpg
 # exec_always wal -a "90" -i /home/lollo/Pictures/wallpapers/wallpaper.jpg
 exec_always wal -R
 exec_always xset -dpms
 exec_always xset s off
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-# #---Dropdown Windows---# #
-# General dropdown window traits. The order can matter.
-for_window [instance="dropdown_*"] floating enable
-for_window [instance="dropdown_*"] move scratchpad
-for_window [instance="dropdown_*"] sticky enable
-for_window [instance="dropdown_*"] scratchpad show
-for_window [instance="dropdown_tmuxdd"] resize set 625 450
-for_window [instance="dropdown_dropdowncalc"] resize set 800 300
-for_window [instance="dropdown_tmuxdd"] border pixel 3
-for_window [instance="dropdown_dropdowncalc"] border pixel 2
-for_window [instance="dropdown_*"] move position center
+
+# Assign Workspaces
+assign [class="Pulseeffects"]			$ws10
+assign [class="Pavucontrol"]			$ws10	
 
 # for_window [class="Telegram"]			floating enable
 for_window [class="Steam"]			floating enable
@@ -42,31 +41,12 @@ for_window [class="Steam"]			floating enable
 for_window [class="cool-retro-term"]		floating enable
 for_window [class="Virt-manager"]		floating enable
 for_window [class="Minecraft Launcher"]		floating enable
-for_window [title="Default - Wine desktop"]	floating enable
-for_window [title="Pavucontrol"]		floating enable
-for_window [title="Pulseeffects"]		floating enable
-for_window [title="Gnome-calculator"]		floating enable
+for_window [class="Default - Wine desktop"]	floating enable
+for_window [class="Pavucontrol"]		floating enable
+for_window [class="Pulseeffects"]		floating enable
+for_window [class="Gnome-calculator"]		floating enable
 
 
-# --- Bar --- # 
-bar {
-	font pango:mono 12
-	# status_command i3status
-  	status_command i3blocks -c .config/i3blocks/config
-	position bottom
-	mode dock
-	modifier None
-
-
-	colors {
-		background $bg-color
-	    	separator #757575
-		#                  border             background         text
-		focused_workspace  $bg                $fg                $bg
-		inactive_workspace $inactive-bg-color $bg                $fg
-		urgent_workspace   #FF4500            #FF4500            #FF4500
-	}
-}
 
 # --- Basic Bindings --- #
 bindsym $mod+q 			[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
@@ -78,7 +58,7 @@ bindsym $mod+Shift+d		exec DESKTOP_SESSION=kde dolphin
 bindsym $mod+d 			exec --no-startup-id rofi -show drun
 bindsym --release Print 	exec spectacle 
 
-bindsym $mod+t			gaps inner current set 10; gaps outer current set 5
+bindsym $mod+t			gaps inner current set 30; gaps outer current set 0; gaps bottom current set 20
 bindsym $mod+g			gaps inner current set 0; gaps outer current set 0
 bindsym $mod+Shift + t		gaps inner current plus 5
 bindsym $mod+Shift + g		gaps inner current minus 5
@@ -149,7 +129,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -162,7 +142,7 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# --- Workspace --- #
+# --- Workspaces --- #
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -233,15 +213,6 @@ bindsym $mod+Shift+x exec i3lock --color 475263
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
-# Disable screen locking
-exec_always xautolock &
-exec_always xautolock -disable
-exec_always export XDG_CURRENT_DESKTOP=kde dolphin
-
 # Shutdown, Reboot manager
 set $Locker i3lock --color 475263 && sleep 1
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -275,7 +246,7 @@ client.focused         	$bg	$bg	$fg  $bg       $bg
 client.focused_inactive $fg	$fg	$bg  $fg       $fg
 client.unfocused        $fg	$fg	$bg  $fg       $fg
 client.urgent           $bg     $bg     $fg  $bg       $bg
-client.urgent           #FF4500 #FF4500 #FF4500  #FF4500 #FF4500
+#client.urgent           #FF4500 #FF4500 #FF4500  #FF4500 #FF4500
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background       $bg
