@@ -1,4 +1,4 @@
-# Lorenzo Olearo
+# Lorenzo Olearo 
 # i3 config file (v4)
 
 # --- Basic Definitions --- #
@@ -16,13 +16,6 @@ font pango:DejaVu Sans 12
 
 # Start at login
 exec picom
-exec dropbox
-exec brave
-exec --no-startup-id pulseeffects
-exec --no-startup-id nm-applet
-exec --no-startup-id kdeconnect-indicator
-
-
 exec_always feh --bg-fill /home/lollo/Pictures/Wallpapers/wallpaper.jpg
 # exec_always wal -a "90" -i /home/lollo/Pictures/wallpapers/wallpaper.jpg
 exec_always wal -R
@@ -31,9 +24,19 @@ exec_always xset s off
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
+exec dropbox
+exec firefox
+exec --no-startup-id pulseeffects
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id mpv --mute=yes --geometry=50%x50% "https://youtu.be/DWcJFNfaw9c"
+
+
 # Assign Workspaces
 assign [class="Pulseeffects"]			$ws10
-assign [class="Pavucontrol"]			$ws10	
+assign [class="Pavucontrol"]			$ws10
+assign [class="mpv"]				$ws10
 
 # for_window [class="Telegram"]			floating enable
 for_window [class="Steam"]			floating enable
@@ -47,6 +50,7 @@ for_window [class="Default - Wine desktop"]	floating enable
 for_window [class="Pavucontrol"]		floating enable
 for_window [class="Pulseeffects"]		floating enable
 for_window [class="Gnome-calculator"]		floating enable
+for_window [class="mpv"]			floating enable
 
 
 
@@ -98,7 +102,7 @@ bindsym $mod+Ctrl+j		move workspace to output left
 
 bindsym $mod+k			focus down
 bindsym $mod+Shift+k		move down 30
-bindsym $mod+Ctrl+k		move workspace to output down\
+bindsym $mod+Ctrl+k		move workspace to output down
 
 bindsym $mod+i			focus up
 bindsym $mod+Shift+i		move up 30

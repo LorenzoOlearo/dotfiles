@@ -1,6 +1,14 @@
-"
+
 " Lorenzo Olearo ~/.vimrc "
 "
+
+" call plug#begin('~/.vim/plugged')
+" Plug 'dylanaraps/wal.vim'
+" call plug#end()
+
+" Work around for background color erase in Kitty terminal
+let &t_ut=''
+
 
 " CUSTOM COMMANDS
 "
@@ -19,8 +27,10 @@ map<F5> :set wrap<CR>
 map<F6> :set nowrap<CR>
 "
 " pdflatex auto-compile
-map<F4> :Silent pdflatex %<CR>
-
+map<F4> :Silent xelatex %<CR>
+"
+" Clear seach highlight after pressing esc
+" nnoremap <silent> <esc> :noh<cr><esc>
 
 "GENERAL
 "
@@ -30,16 +40,9 @@ map<F4> :Silent pdflatex %<CR>
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
-
+"
 " Numbered lines
-set number relativenumber
-
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
-
+set number
 "
 " Set to auto read when a file is changed form outside
 " set autoread
@@ -104,12 +107,13 @@ set tm=500
 " COLORS AND FONTS
 "
 " Enable syntax highlights
+packadd! dracula
 syntax enable
+colorscheme molokai 
 "
-" Enable 256 colors palette in gnome-terminal
-if $COLORTERM == 'gnome=terminal'
-	set t_Co=256
-endif
+" Enable 256 colors palette
+set t_Co=256
+
 set background=dark
 "
 " Set utf8 as standard encoding and en_US as the standard language
@@ -129,6 +133,9 @@ set si
 "
 " No Wrap lines default
 set nowrap
+"
+" Diseble automatic comment insertion on new line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 " STATUS LINE

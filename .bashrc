@@ -11,8 +11,31 @@ PS1='[\u@\h \W]\$ '
 
 tilde='~'
 
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(cat ~/.cache/wal/sequences &)
+
 export EDITOR=vim
 export XDG_CURRENT_DESKTOP=kde dolphin
+export TERMINAL="konsole"
+
+# System alias
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+alias fehwal='feh --bg-fill'
+alias wally='wal -a "90" -i'
+alias uu='urxvt'
+alias vlc='vlc --no-qt-system-tray'
+alias ita='curl https://corona-stats.online/Italy?minimal=true'
+alias killtg='killall telegram-desktop'
+alias quote='fortune -a | fmt -79 -s | $(shuf -n 1 -e cowsay cowthink) -$(shuf -n 1 -e b d g p s t w y) -f $(shuf -n 1 -e $(cowsay -l | tail -n +2)) -n'
+alias mirror-update='reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist'
+
+# Dotfiles backup alias
+alias dot='cd ~/Dropbox/dotfiles/'
 
 # Current work directory alias
 alias dumb='cd ~/Dropbox/Bicocca/side-projects/dumb-dumb-sorting-demo/'
@@ -22,16 +45,12 @@ alias bic='cd ~/Dropbox/Bicocca/'
 alias anno1='cd ~/Dropbox/Bicocca/primo-anno/'
 alias sm1='cd ~/Dropbox/Bicocca/primo-anno/primo-semestre/'
 alias sm2='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/'
-alias prog='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/programmazione-2/'
-alias alg='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/algebra-lineare/'
+alias prog2='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/programmazione-2/'
+alias alge='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/algebra-lineare/'
 alias arch='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/architettura-elaboratori/'
-alias alg='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/algoritmi-strutture-dati/'
+alias algo='cd ~/Dropbox/Bicocca/primo-anno/secondo-semestre/algoritmi-strutture-dati/'
 
-# System alias
-alias dud='du -d 1 -h'
-alias duf='du -sh *'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
+
 
 # KDE related 
 alias kde-restart='kstart5 plasmashell'
