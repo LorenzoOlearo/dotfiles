@@ -1,0 +1,9 @@
+vim-themes/
+
+# Exclude tmux tqm plugins
+.config/tmux/plugins/
+
+# Exclude kitty themes
+.config/kitty/kitty-themes/
+
+
