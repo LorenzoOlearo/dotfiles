@@ -1,4 +1,4 @@
-URxvt.font: xft:hack:size=12
+URxvt.font: xft:Source Code Pro:size=14
 URxvt.letterSpace: +0
 URxvt.scrollBar: false
 URxvt.internalBorder: 4
@@ -6,7 +6,22 @@ URxvt.internalBorder: 4
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0200/c800
 
-URxvt.perl-ext-common: default,matcher,fullscreen,resize-font
+Xft.dpi: 155
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+Xcursor.theme: Chameleon-Pearl-Regular-0.5
+Xcursor.size:  0
+
+URxvt*scrollBar:                      false
+URxvt*mouseWheelScrollPage:           false
+URxvt*cursorBlink:                    true
+URxvt*saveLines:                      5000
+
+URxvt.perl-ext-common: default,matcher,fullscreen,resize-font,vtwheel
 
 ! Clickable URLs
 URxvt.url-launcher: firefox
@@ -19,41 +34,41 @@ URxvt.keysym.C-Down:  resize-font:smaller
 URxvt.keysym.C-Up:    resize-font:bigger
 
 
-! The current colorscheme is based on the Molokai Vim theme
+! Somewhat of a Monokai color scheme
 
 ! special
-URxvt*foreground:   #d0d0d0
-URxvt*background:   #272822
-URxvt*cursorColor:  #ffffff
+*.foreground:   #d1d1d1
+! *.background:   #221e2d
+*.cursorColor:  #d1d1d1
 
 ! black
-URxvt*color0:       #27822
-URxvt*color8:       #303030
+*.color0:       #272822
+*.color8:       #75715e
 
 ! red
-URxvt*color1:       #d0d0d0
-URxvt*color9:       #ff0090
+*.color1:       #f92672
+*.color9:       #f92672
 
 ! green
-URxvt*color2:       #66AA11
-URxvt*color10:      #80FF00
+*.color2:       #a6e22e
+*.color10:      #a6e22e
 
 ! yellow
-URxvt*color3:       #c47f2c
-URxvt*color11:      #ffba68
+*.color3:       #f4bf75
+*.color11:      #f4bf75
 
 ! blue
-URxvt*color4:       #30309b
-URxvt*color12:      #5f5fee
+*.color4:       #66d9ef
+*.color12:      #66d9ef
 
 ! magenta
-URxvt*color5:       #7e40a5
-URxvt*color13:      #bb88dd
+*.color5:       #ae81ff
+*.color13:      #ae81ff
 
 ! cyan
-URxvt*color6:       #3579A8
-URxvt*color14:      #4eb4fa
+*.color6:       #a1efe4
+*.color14:      #a1efe4
 
 ! white
-URxvt*color7:       #9999AA
-URxvt*color15:      #ffffff
+*.color7:       #f8f8f2
+*.color15:      #f9f8f5
