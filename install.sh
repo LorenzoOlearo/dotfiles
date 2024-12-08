@@ -9,6 +9,7 @@ else
 fi
 
 # Ask the user if they have reviewed the install script and are okay with executing it
+echo ""
 read -p "Have you reviewed the install script and are you okay with executing it? (yes/no): " response
 
 if [ "$response" = "yes" ]; then
