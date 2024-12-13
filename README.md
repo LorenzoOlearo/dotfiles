@@ -25,6 +25,7 @@ recommended for git management
 - [Tree-sitter](https://tree-sitter.github.io/tree-sitter/): syntax highlighting
 - [wl-clipboard](https://archlinux.org/packages/?name=wl-clipboard): to make
 system clipboard work in wayland
+- [python-debugpy](https://github.com/microsoft/debugpy): optional, for python debugging with [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python)
 
 ### Install Script
 To install the current setup, you can run the `install.sh` script. The script
