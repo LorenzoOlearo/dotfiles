@@ -23,6 +23,8 @@ External Requirements:
 - [Lazygit](https://github.com/jesseduffield/lazygit/tree/master): optional but
 recommended for git management
 - [Tree-sitter](https://tree-sitter.github.io/tree-sitter/): syntax highlighting
+- [wl-clipboard](https://archlinux.org/packages/?name=wl-clipboard): to make
+system clipboard work in wayland
 
 ### Install Script
 To install the current setup, you can run the `install.sh` script. The script
