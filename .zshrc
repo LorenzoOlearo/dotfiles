@@ -9,6 +9,8 @@ export TERM=kitty
 
 alias vim="nvim"
 
+alias vpn-connect="sudo -E gpclient connect --browser default ravpn.unimib.it"
+
 # Disable history expansion
 # setopt nobanghist
 
