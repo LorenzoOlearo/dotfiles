@@ -10,17 +10,17 @@ return {
 		ignore = nil,
 		---LHS of toggle mappings in NORMAL mode
 		toggler = {
-			-- -Line-comment toggle keymap
-			line = "//",
+			---Line-comment toggle keymap
+			line = "<A-/>",
 			---Block-comment toggle keymap
-			block = "/c",
+			block = "<A-c>",
 		},
 		---LHS of operator-pending mappings in NORMAL and VISUAL mode
 		opleader = {
 			---Line-comment keymap
-			line = "//",
+			line = "<A-/>",
 			---Block-comment keymap
-			block = "/c",
+			block = "<A-c>",
 		},
 		---LHS of extra mappings
 		extra = {
