@@ -18,7 +18,7 @@ require("lazy").setup({
 
 	require("custom/plugins/treesitter-context"),
 
-	-- require 'custom/plugins/copilot',
+	require("custom/plugins/copilot"),
 
 	require("custom/plugins/venv-selector"),
 
