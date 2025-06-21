@@ -6,4 +6,5 @@ vim-themes/
 # Exclude kitty themes
 .config/kitty/kitty-themes/
 
-
+# Exclude lazy lock files
+.config/nvim/lazy-lock.json
