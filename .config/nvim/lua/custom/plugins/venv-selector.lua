@@ -48,6 +48,6 @@ return {
 		})
 	end,
 	keys = {
-		{ ",v", "<cmd>VenvSelect<cr>" },
+		{ "<leader>sv", "<cmd>VenvSelect<CR>", desc = "[S]earch [V]env" },
 	},
 }

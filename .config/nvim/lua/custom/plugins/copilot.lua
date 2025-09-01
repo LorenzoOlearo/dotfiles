@@ -38,7 +38,7 @@ return {
 		build = "make tiktoken",
 		opts = {
 			system_prompt = "COPILOT_INSTRUCTIONS",
-			model = "gpt-4.1",
+			model = "gpt-5",
 			agent = "copilot",
 			context = nil,
 			sticky = nil,
@@ -181,14 +181,14 @@ return {
 		},
 	},
 
-	vim.keymap.set("n", "<leader>cc", function()
+	vim.keymap.set("n", "<leader>vv", function()
 		local input = vim.fn.input("Quick Chat: ")
 		if input ~= "" then
 			require("CopilotChat").ask(input)
 		end
 	end, { desc = "CopilotChat - Quick chat (normal mode, no context)" }),
 
-	vim.keymap.set("v", "<leader>ccv", function()
+	vim.keymap.set("v", "<leader>vv", function()
 		local input = vim.fn.input("Quick Chat: ")
 		if input ~= "" then
 			require("CopilotChat").ask(input, { selection = require("CopilotChat.select").visual })
