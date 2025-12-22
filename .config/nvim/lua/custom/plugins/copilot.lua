@@ -49,7 +49,7 @@ return {
 			remember_as_sticky = true,
 			-- selection = select.visual,
 			window = {
-				layout = "vertical",
+				layout = "horizontal",
 				width = 0.5,
 				height = 0.5,
 				relative = "editor",
