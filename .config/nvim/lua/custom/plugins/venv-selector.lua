@@ -37,11 +37,21 @@ return {
 	lazy = false,
 	branch = "main",
 	config = function()
+		local home = os.getenv("HOME") or vim.fn.expand("~")
+
+		-- Detect which fd command is available
+		local fd_cmd = "fd"
+		if vim.fn.executable("fdfind") == 1 then
+			fd_cmd = "fdfind"
+		elseif vim.fn.executable("fd") == 1 then
+			fd_cmd = "fd"
+		end
+
 		require("venv-selector").setup({
 			settings = {
 				search = {
 					my_venv = {
-						command = "fdfind python3 /home/ubuntu/lorenzo_olearo/python-envs/",
+						command = fd_cmd .. ' -E .git -E node_modules "python3" ' .. home .. ' | grep "/bin/"',
 					},
 				},
 			},
