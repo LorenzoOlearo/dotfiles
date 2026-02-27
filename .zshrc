@@ -3,13 +3,13 @@
 precmd_functions+=(_fix_cursor)
 
 export PATH=$PATH:/home/lollo/Dropbox/dotfiles/scripts
-export TERM=kitty
+export TERM="xterm-256color"
 # [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 # [ "$TERM" = "kitty" ] && alias ssh="kitty +kitten ssh"
 
 alias vim="nvim"
-
 alias vpn-connect="sudo -E gpclient connect --browser default ravpn.unimib.it"
+alias dexec='docker exec -it -e TERM=xterm-256color'
 
 # Disable history expansion
 # setopt nobanghist
@@ -91,3 +91,6 @@ bindkey '^e' edit-command-line
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+# Added by Hugging Face CLI installer
+export PATH="/home/lollo/.local/bin:$PATH"
