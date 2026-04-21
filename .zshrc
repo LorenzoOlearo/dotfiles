@@ -9,7 +9,10 @@ export TERM="xterm-256color"
 
 alias vim="nvim"
 alias vpn-connect="sudo -E gpclient connect --browser default ravpn.unimib.it"
-alias dexec='docker exec -it -e TERM=xterm-256color'
+alias dexec='docker exec -it -u ubuntu -e TERM="$TERM"'
+
+alias spectra="cd /home/lollo/Dropbox/Bicocca/phd/projects/SPECTRA && source ~/Documents/python-envs/spectra/bin/activate"
+
 
 # Disable history expansion
 # setopt nobanghist
