@@ -48,11 +48,9 @@ return {
 		end
 
 		require("venv-selector").setup({
-			settings = {
-				search = {
-					my_venv = {
-						command = fd_cmd .. ' -E .git -E node_modules "python3" ' .. home .. ' | grep "/bin/"',
-					},
+			search = {
+				my_venv = {
+					command = fd_cmd .. ' -E .git -E node_modules "python3" ' .. home .. ' | grep "/bin/"',
 				},
 			},
 		})

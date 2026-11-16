@@ -119,7 +119,7 @@ return {
 					--
 					-- When you move your cursor, the highlights will be cleared (the second autocommand).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
-					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+					if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 						local highlight_augroup =
 							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -147,7 +147,7 @@ return {
 					-- code, if the language server you are using supports them
 					--
 					-- This may be unwanted, since they displace some of your code
-					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+					if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 						map("<leader>th", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
@@ -184,6 +184,8 @@ return {
 				clangd = {},
 				-- gopls = {},
 				pyright = {},
+				texlab = {}, -- LaTeX: completion, refs, build-log diagnostics
+				ltex_plus = { settings = { ltex = { language = "en-GB" } } }, -- British grammar/spelling
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -223,21 +225,17 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"markdownlint", -- nvim-lint, markdown
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-			require("mason-lspconfig").setup({
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						-- This handles overriding only values explicitly passed
-						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for ts_ls)
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
-			})
+			-- mason-lspconfig v2 dropped `handlers`: configure via vim.lsp.config,
+			-- it then calls vim.lsp.enable for every installed server.
+			vim.lsp.config("*", { capabilities = capabilities })
+			for name, cfg in pairs(servers) do
+				vim.lsp.config(name, cfg)
+			end
+			require("mason-lspconfig").setup()
 		end,
 	},
 }

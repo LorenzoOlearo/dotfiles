@@ -7,6 +7,7 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        tex = { 'chktex' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -51,7 +52,7 @@ return {
           -- avoid superfluous noise, notably within the handy LSP pop-ups that
           -- describe the hovered symbol using Markdown.
           if vim.opt_local.modifiable:get() then
-            lint.try_lint()
+            lint.try_lint(nil, { ignore_errors = true }) -- silent if a linter binary (e.g. chktex) is not installed
           end
         end,
       })

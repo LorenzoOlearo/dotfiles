@@ -28,8 +28,11 @@ return {
 			end
 
 			vim.api.nvim_create_autocmd("FileType", {
-				callback = function()
-					pcall(vim.treesitter.start)
+				callback = function(args)
+					-- tex: vimtex's syntax is richer, and its math-zone/conceal features need it
+					if args.match ~= "tex" then
+						pcall(vim.treesitter.start)
+					end
 				end,
 			})
 		end,

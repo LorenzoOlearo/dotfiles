@@ -26,6 +26,12 @@ vim.opt.showmode = false
 vim.schedule(function()
 	vim.opt.clipboard = "unnamedplus"
 end)
+--
+-- Independent-register alternative (uncomment to stop y/p from hitting the OS
+-- clipboard / OSC 52 / kitty's read-confirmation prompt; use "+y / "+p instead):
+-- -- vim.schedule(function()
+-- -- 	vim.opt.clipboard = ""
+-- -- end)
 
 -- Enable break indent
 vim.opt.breakindent = true

@@ -51,7 +51,8 @@ require("lazy").setup({
 
 	require("custom.plugins.debug"),
 	-- require 'custom.plugins.indent_line',
-	-- require 'custom.plugins.lint',
+	require("custom.plugins.lint"),
+	require("custom.plugins.vimtex"),
 	-- require 'custom.plugins.autopairs',
 	require("custom.plugins.neo-tree"),
 }, {
